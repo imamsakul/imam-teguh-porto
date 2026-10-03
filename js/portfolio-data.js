@@ -73,20 +73,13 @@ const PORTFOLIO_DATA = [
     details: "Conceptualized with high-contrast neon magenta and electric teal palette against gritty textured duotone visuals. Created customized distressed typography for festival headliners and developed press-ready CMYK assets alongside animated LED billboard specs.",
     tools: ["Photoshop", "Illustrator", "Lightroom"],
     previewType: "image",
-    accentColor: "#ec4899",
-    themeGradient: "linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #06b6d4 100%)",
+    accentColor: "#0284c7",
+    themeGradient: "#0284c7",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ec4899"/>
-            <stop offset="50%" stop-color="#a855f7"/>
-            <stop offset="100%" stop-color="#06b6d4"/>
-          </linearGradient>
-        </defs>
-        <rect width="600" height="400" fill="#090514"/>
+        <rect width="600" height="400" fill="#07090e"/>
         <!-- Cyber grid lines -->
-        <g stroke="#ec4899" stroke-width="0.8" opacity="0.2">
+        <g stroke="#0284c7" stroke-width="0.8" opacity="0.25">
           <line x1="0" y1="360" x2="600" y2="360"/>
           <line x1="0" y1="320" x2="600" y2="320"/>
           <line x1="0" y1="280" x2="600" y2="280"/>
@@ -98,12 +91,12 @@ const PORTFOLIO_DATA = [
           <line x1="550" y1="400" x2="380" y2="240"/>
         </g>
         <!-- Neon Sun / Portal -->
-        <circle cx="300" cy="170" r="85" fill="none" stroke="url(#neonGrad)" stroke-width="4"/>
-        <circle cx="300" cy="170" r="70" fill="#ec4899" opacity="0.2"/>
+        <circle cx="300" cy="170" r="85" fill="none" stroke="#38bdf8" stroke-width="4"/>
+        <circle cx="300" cy="170" r="70" fill="#0284c7" opacity="0.15"/>
         <text x="300" y="165" font-family="'Space Grotesk', sans-serif" font-size="44" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="6">NEON PULSE</text>
-        <text x="300" y="198" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#06b6d4" text-anchor="middle" letter-spacing="8">OCTOBER 24-26 • ASIA TOUR</text>
-        <rect x="200" y="220" width="200" height="28" rx="14" fill="#ec4899" opacity="0.3"/>
-        <text x="300" y="239" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#f43f5e" text-anchor="middle" letter-spacing="3">FEATURING 30+ ARTISTS</text>
+        <text x="300" y="198" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="700" fill="#38bdf8" text-anchor="middle" letter-spacing="8">OCTOBER 24-26 • ASIA TOUR</text>
+        <rect x="200" y="220" width="200" height="28" rx="14" fill="#0284c7" opacity="0.25"/>
+        <text x="300" y="239" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="3">FEATURING 30+ ARTISTS</text>
       </svg>
     `
   },
