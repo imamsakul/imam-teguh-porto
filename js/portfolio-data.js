@@ -249,7 +249,7 @@ const PORTFOLIO_DATA = [
     tools: ["Photoshop", "Canva Pro", "Lightroom"],
     previewType: "image",
     accentColor: "#f59e0b",
-    themeGradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+    themeGradient: "#f59e0b",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <rect width="600" height="400" fill="#1c1917"/>
@@ -296,7 +296,7 @@ const PORTFOLIO_DATA = [
     tools: ["Adobe Illustrator", "Figma"],
     previewType: "image",
     accentColor: "#3b82f6",
-    themeGradient: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
+    themeGradient: "#2563eb",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <rect width="600" height="400" fill="#0b1329"/>
@@ -349,16 +349,10 @@ const PORTFOLIO_DATA = [
     videoDuration: "00:45 Preview",
     videoTopic: "Talking Head Mastercut Demo",
     accentColor: "#f43f5e",
-    themeGradient: "linear-gradient(135deg, #f43f5e 0%, #e11d48 100%)",
+    themeGradient: "#f43f5e",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="stageLight" cx="50%" cy="40%" r="50%">
-            <stop offset="0%" stop-color="#312e81"/>
-            <stop offset="100%" stop-color="#020617"/>
-          </radialGradient>
-        </defs>
-        <rect width="600" height="400" fill="url(#stageLight)"/>
+        <rect width="600" height="400" fill="#07090e"/>
         
         <!-- Video Camera Viewfinder Frame -->
         <rect x="40" y="30" width="520" height="340" rx="12" fill="none" stroke="#f43f5e" stroke-width="2" opacity="0.6"/>
@@ -470,8 +464,8 @@ const PORTFOLIO_DATA = [
     previewType: "video",
     videoDuration: "00:30 Reel",
     videoTopic: "Vertical Shorts Mastercut",
-    accentColor: "#06b6d4",
-    themeGradient: "linear-gradient(135deg, #06b6d4 0%, #0284c7 100%)",
+    accentColor: "#0284c7",
+    themeGradient: "#0284c7",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <rect width="600" height="400" fill="#082f49"/>
@@ -563,7 +557,7 @@ const PORTFOLIO_DATA = [
       { pageNum: 42, title: "Leadership & Governance", note: "Executive portrait layout with dual-language bios and corporate credentials." }
     ],
     accentColor: "#0284c7",
-    themeGradient: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)",
+    themeGradient: "#0284c7",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <rect width="600" height="400" fill="#0f172a"/>
