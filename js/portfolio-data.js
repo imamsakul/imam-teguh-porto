@@ -28,7 +28,7 @@ const PORTFOLIO_DATA = [
       { label: "Guidelines Scope", value: "64 Pages" }
     ],
     summary: "A modern, future-proof identity system created for a high-growth biotechnology firm. Included custom logomark, dynamic color system, and complete brand stationery.",
-    details: "Lumina required a visual identity that balanced scientific authority with human warmth. The solution was built around an interconnected hexagonal molecular mark fused with a soft gradient palette of bio-cyan and deep indigo. The project delivered comprehensive brand guidelines, corporate stationery, exhibition roll-ups, and 3D merchandise mockups.",
+    details: "Lumina required a visual identity that balanced scientific authority with human warmth. The solution was built around an interconnected hexagonal molecular mark fused with a clean color palette of bio-cyan and deep indigo. The project delivered comprehensive brand guidelines, corporate stationery, exhibition roll-ups, and 3D merchandise mockups.",
     tools: ["Adobe Illustrator", "Adobe Photoshop", "Figma"],
     previewType: "image",
     accentColor: "#2563eb",
@@ -633,7 +633,7 @@ const PORTFOLIO_DATA = [
       { pageNum: 25, title: "Chapter 3: Content Architecture", note: "Structured modular layout with step-by-step framework diagrams." }
     ],
     accentColor: "#ea580c",
-    themeGradient: "linear-gradient(135deg, #ea580c 0%, #c2410c 100%)",
+    themeGradient: "#ea580c",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <rect width="600" height="400" fill="#18181b"/>
