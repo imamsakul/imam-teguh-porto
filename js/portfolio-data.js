@@ -204,15 +204,9 @@ const PORTFOLIO_DATA = [
     ],
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="igCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#064e3b"/>
-            <stop offset="100%" stop-color="#022c22"/>
-          </linearGradient>
-        </defs>
         <rect width="600" height="400" fill="#031a14"/>
         <!-- Carousel Frame Mockup -->
-        <rect x="140" y="30" width="320" height="340" rx="16" fill="url(#igCardGrad)" stroke="#10b981" stroke-width="2"/>
+        <rect x="140" y="30" width="320" height="340" rx="16" fill="#064e3b" stroke="#10b981" stroke-width="2"/>
         <!-- Header bar -->
         <circle cx="170" cy="55" r="12" fill="#10b981"/>
         <text x="190" y="60" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#ffffff">@finscale.app</text>
@@ -419,42 +413,36 @@ const PORTFOLIO_DATA = [
     previewType: "video",
     videoDuration: "01:00 Explainer",
     videoTopic: "Motion Graphic Explainer Showcase",
-    accentColor: "#8b5cf6",
-    themeGradient: "linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)",
+    accentColor: "#2563eb",
+    themeGradient: "#2563eb",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="motionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8b5cf6"/>
-            <stop offset="100%" stop-color="#3b82f6"/>
-          </linearGradient>
-        </defs>
-        <rect width="600" height="400" fill="#0c0a1f"/>
+        <rect width="600" height="400" fill="#07090e"/>
         <!-- Kinetic Floating UI Elements -->
         <g transform="translate(160, 60)">
           <!-- Main Card -->
-          <rect x="0" y="20" width="280" height="170" rx="14" fill="#1e1b4b" stroke="url(#motionGrad)" stroke-width="2.5"/>
+          <rect x="0" y="20" width="280" height="170" rx="14" fill="#0c1017" stroke="#2563eb" stroke-width="2.5"/>
           <circle cx="25" cy="45" r="6" fill="#ef4444"/>
           <circle cx="45" cy="45" r="6" fill="#f59e0b"/>
           <circle cx="65" cy="45" r="6" fill="#10b981"/>
           
-          <rect x="25" y="70" width="150" height="16" rx="4" fill="#8b5cf6"/>
-          <rect x="25" y="96" width="230" height="8" rx="4" fill="#312e81"/>
-          <rect x="25" y="114" width="180" height="8" rx="4" fill="#312e81"/>
+          <rect x="25" y="70" width="150" height="16" rx="4" fill="#2563eb"/>
+          <rect x="25" y="96" width="230" height="8" rx="4" fill="#1e293b"/>
+          <rect x="25" y="114" width="180" height="8" rx="4" fill="#1e293b"/>
           
           <!-- Isometric Mini Card 1 -->
-          <rect x="180" y="-30" width="120" height="90" rx="10" fill="#2e1065" stroke="#c084fc" stroke-width="2" transform="rotate(12)"/>
+          <rect x="180" y="-30" width="120" height="90" rx="10" fill="#131926" stroke="#3b82f6" stroke-width="2" transform="rotate(12)"/>
           <text x="210" y="10" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="800" fill="#ffffff" transform="rotate(12)">+94% SPEED</text>
         </g>
         
         <!-- Motion Speed Waves -->
-        <path d="M50,290 C180,240 240,340 400,280 C480,250 520,310 560,280" fill="none" stroke="#a855f7" stroke-width="4" stroke-linecap="round"/>
+        <path d="M50,290 C180,240 240,340 400,280 C480,250 520,310 560,280" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
         <path d="M70,320 C200,270 260,370 420,310 C500,280 540,340 580,310" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
 
         <!-- Play Button -->
-        <circle cx="300" cy="200" r="36" fill="#8b5cf6"/>
+        <circle cx="300" cy="200" r="36" fill="#2563eb"/>
         <polygon points="292,185 316,200 292,215" fill="#ffffff"/>
-        <text x="300" y="370" font-family="'Space Grotesk', sans-serif" font-size="16" font-weight="800" fill="#e9d5ff" text-anchor="middle" letter-spacing="3">MOTION GRAPHIC REEL</text>
+        <text x="300" y="370" font-family="'Space Grotesk', sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="3">MOTION GRAPHIC REEL</text>
       </svg>
     `
   },
