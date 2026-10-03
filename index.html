@@ -2,45 +2,55 @@
 <html lang="id" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Imam Teguh | Visual Designer & Video Editor Portfolio</title>
   
-  <!-- Meta & SEO -->
-  <meta name="description" content="Portofolio resmi Imam Teguh - Spesialis Graphic Design, Social Media Post, Video Editing (Talking Head & Motion Graphics), dan Document Layout.">
+  <!-- SEO & Meta -->
+  <meta name="description" content="Portofolio resmi Imam Teguh - Spesialis Graphic Design, Social Media Posts, Video Editing (Talking Head & Motion Graphics), dan Document Layout.">
   <meta name="keywords" content="Imam Teguh, Portfolio, Graphic Design, Social Media Post, Video Editor, Talking Head, Motion Graphic, Document Layout, InDesign, Premiere Pro, After Effects">
   <meta name="author" content="Imam Teguh">
+  <meta name="theme-color" content="#070a12">
 
-  <!-- Open Graph / Social Sharing -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Imam Teguh | Visual Designer & Video Editor Portfolio">
-  <meta property="og:description" content="Showcase karya Graphic Design, Social Media Content, Video Editing (Talking Head & Motion Graphic), dan Document Layout.">
-  <meta property="og:url" content="https://imam-teguh-portfolio.vercel.app">
+  <meta property="og:description" content="Curated showcase: Graphic Design, Social Media Growth, Talking Head Video, Motion Graphics, and Corporate Editorial Layout.">
+  <meta property="og:url" content="https://imamteguhporto.my.id">
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%236366f1'/><text x='50' y='65' font-size='48' font-weight='bold' fill='white' text-anchor='middle'>IT</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%236366f1'/><text x='50' y='64' font-size='46' font-family='sans-serif' font-weight='800' fill='white' text-anchor='middle'>IT</text></svg>">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Ambient Glowing Background Orbs -->
-  <div class="bg-ambient">
+  <!-- Accessible Skip Link -->
+  <a href="#works" class="skip-link">Skip to main content</a>
+
+  <!-- Ambient Glowing Background Orbs & Spotlight -->
+  <div class="bg-ambient" aria-hidden="true">
     <div class="glow-orb glow-orb-1"></div>
     <div class="glow-orb glow-orb-2"></div>
     <div class="glow-orb glow-orb-3"></div>
   </div>
 
   <!-- Navigation Bar -->
-  <header class="navbar">
+  <header class="navbar" id="siteNavbar">
     <div class="container nav-container">
-      <a href="#" class="brand-logo">
-        <span class="logo-badge">IT</span>
+      <a href="#" class="brand-logo" aria-label="Imam Teguh Home">
+        <span class="logo-badge" aria-hidden="true">IT</span>
         <span class="brand-text">Imam Teguh</span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Main Navigation">
         <a href="#about" class="nav-link">About</a>
+        <a href="#bento" class="nav-link">Highlights</a>
         <a href="#works" class="nav-link active">Portfolio</a>
         <a href="#services" class="nav-link">Services</a>
         <a href="#skills" class="nav-link">Skills</a>
@@ -50,18 +60,18 @@
       </nav>
 
       <div class="nav-actions">
-        <!-- Dark / Light Theme Toggle -->
-        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Theme">
-          <!-- Icon injected by JS -->
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" aria-label="Toggle Dark and Light Mode">
+          <!-- Injected by JS -->
         </button>
 
         <a href="#contact" class="btn btn-primary btn-talk">
           <span>Let's Talk</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
 
-        <!-- Mobile Hamburger Button -->
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu">
+        <!-- Mobile Menu Hamburger -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -70,13 +80,13 @@
     </div>
   </header>
 
-  <main>
+  <main id="mainContent">
     <!-- HERO SECTION -->
     <section class="hero-section" id="about">
       <div class="container hero-grid">
         <div class="hero-content">
-          <div class="availability-badge">
-            <span class="status-dot"></span>
+          <div class="availability-badge" role="status">
+            <span class="status-dot" aria-hidden="true"></span>
             <span>Available for Freelance & Full-time Roles</span>
           </div>
 
@@ -87,50 +97,52 @@
           <p class="hero-subtitle">
             Halo! Saya <strong>Imam Teguh</strong>, seorang Multi-Disciplinary Visual Designer & Video Editor. 
             Membantu brand, creator, dan bisnis bertumbuh lewat <strong>Graphic Design</strong> strategis, 
-            <strong>Social Media Posts</strong> berdaya tarik tinggi, <strong>Video Editing</strong> dinamis 
-            (<em>Talking Head & Motion Graphics</em>), serta <strong>Document Layout</strong> korporat yang rapi dan profesional.
+            <strong>Social Media Posts</strong> berdaya retensi tinggi, <strong>Video Editing</strong> dinamis 
+            (<em>Talking Head & Motion Graphics</em>), serta <strong>Document Layout</strong> korporat yang rapi dan terukur.
           </p>
 
           <div class="hero-cta-group">
             <a href="#works" class="btn btn-primary">
               <span>Explore My Works</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
             </a>
             <a href="#contact" class="btn btn-outline">
               <span>Get in Touch</span>
             </a>
             <button class="btn btn-outline" id="copyEmailBtn" title="Salin Email">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
               <span>Copy Email</span>
             </button>
           </div>
 
-          <!-- Quick Stats Counter Row -->
+          <!-- Stats Counter Row -->
           <div class="hero-stats-row">
             <div class="stat-item">
-              <span class="stat-number">150+</span>
+              <span class="stat-number" data-target="150">150+</span>
               <span class="stat-label">Projects Completed</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">5+ Years</span>
+              <span class="stat-number" data-target="5">5+ Years</span>
               <span class="stat-label">Creative Experience</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">25M+</span>
+              <span class="stat-number" data-target="25">25M+</span>
               <span class="stat-label">Content Views</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">99%</span>
+              <span class="stat-number" data-target="99">99%</span>
               <span class="stat-label">Client Satisfaction</span>
             </div>
           </div>
         </div>
 
-        <!-- Hero Visual Showcase Card -->
+        <!-- Hero Showcase Card -->
         <div class="hero-visual-card">
-          <!-- Floating Pill Badges -->
+          <!-- Floating Vector Badges (No Emojis) -->
           <div class="floating-pill floating-pill-top">
-            <div class="pill-icon">🎬</div>
+            <div class="pill-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+            </div>
             <div>
               <div class="pill-title">Video & Motion</div>
               <div class="pill-subtitle">Talking Head & 2D Motion</div>
@@ -138,7 +150,7 @@
           </div>
 
           <div class="hero-visual-inner">
-            <svg viewBox="0 0 600 450" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 600 450" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Creative workspace illustration">
               <defs>
                 <linearGradient id="heroArtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stop-color="#4f46e5"/>
@@ -146,41 +158,128 @@
                   <stop offset="100%" stop-color="#06b6d4"/>
                 </linearGradient>
               </defs>
-              <rect width="600" height="450" fill="#0b1120"/>
-              <!-- Creative workspace mockup -->
+              <rect width="600" height="450" fill="#070a12"/>
               <g transform="translate(60, 45)">
-                <!-- Monitor frame -->
-                <rect x="0" y="0" width="480" height="280" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
-                <rect x="15" y="15" width="450" height="250" rx="6" fill="#0f172a"/>
+                <rect x="0" y="0" width="480" height="280" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+                <rect x="15" y="15" width="450" height="250" rx="8" fill="#070a12"/>
                 
-                <!-- Video Timeline tracks -->
-                <rect x="30" y="170" width="420" height="80" rx="4" fill="#090d16"/>
-                <rect x="35" y="178" width="160" height="16" rx="3" fill="#f43f5e" opacity="0.8"/>
-                <rect x="200" y="178" width="120" height="16" rx="3" fill="#3b82f6" opacity="0.8"/>
-                <rect x="325" y="178" width="120" height="16" rx="3" fill="#10b981" opacity="0.8"/>
+                <!-- Timeline tracks -->
+                <rect x="30" y="170" width="420" height="80" rx="6" fill="#0b1120"/>
+                <rect x="35" y="178" width="160" height="16" rx="4" fill="#f43f5e" opacity="0.85"/>
+                <rect x="200" y="178" width="120" height="16" rx="4" fill="#3b82f6" opacity="0.85"/>
+                <rect x="325" y="178" width="120" height="16" rx="4" fill="#10b981" opacity="0.85"/>
                 
-                <rect x="35" y="200" width="90" height="14" rx="3" fill="#a855f7" opacity="0.7"/>
-                <rect x="130" y="200" width="190" height="14" rx="3" fill="#06b6d4" opacity="0.7"/>
-                <rect x="325" y="200" width="100" height="14" rx="3" fill="#eab308" opacity="0.7"/>
+                <rect x="35" y="200" width="90" height="14" rx="4" fill="#a855f7" opacity="0.75"/>
+                <rect x="130" y="200" width="190" height="14" rx="4" fill="#06b6d4" opacity="0.75"/>
+                <rect x="325" y="200" width="100" height="14" rx="4" fill="#eab308" opacity="0.75"/>
                 
                 <!-- Playhead -->
-                <line x1="210" y1="165" x2="210" y2="250" stroke="#ffffff" stroke-width="2"/>
-                <polygon points="205,165 215,165 210,175" fill="#ffffff"/>
+                <line x1="210" y1="165" x2="210" y2="250" stroke="#f8fafc" stroke-width="2"/>
+                <polygon points="205,165 215,165 210,175" fill="#f8fafc"/>
 
                 <!-- Canvas Preview -->
-                <rect x="120" y="30" width="240" height="125" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+                <rect x="120" y="30" width="240" height="125" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
                 <circle cx="240" cy="80" r="30" fill="url(#heroArtGrad)"/>
                 <polygon points="234,70 252,80 234,90" fill="#ffffff"/>
-                <text x="240" y="130" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">IMAM TEGUH • PORTFOLIO 2025</text>
+                <text x="240" y="130" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">IMAM TEGUH • PORTFOLIO</text>
               </g>
             </svg>
           </div>
 
           <div class="floating-pill floating-pill-bottom">
-            <div class="pill-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📑</div>
+            <div class="pill-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
             <div>
               <div class="pill-title">Editorial Layout</div>
               <div class="pill-subtitle">Annual Reports & E-Books</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENTO BOX HIGHLIGHTS SECTION (UI/UX PRO MAX STANDARD) -->
+    <section class="section" id="bento" style="padding-top: 2rem;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Curated Spotlight</span>
+          <h2 class="section-title">The 4 Pillars at a Glance</h2>
+          <p class="section-desc">
+            Arsitektur karya visual berstandar tinggi yang memadukan storytelling, desain grafis presisi, dan eksekusi video dinamis.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Bento Item 1: Large Talking Head Showcase -->
+          <div class="bento-card bento-card-large" onclick="document.querySelector('[data-id=\'ve-talkinghead-founder\']')?.click();" tabindex="0" role="button" aria-label="View Talking Head Case Study">
+            <div class="bento-badge badge-video">Pillar 1 • Video Editing</div>
+            <div class="bento-content">
+              <h3 class="bento-title">High-Retention Talking Head Production</h3>
+              <p class="bento-desc">
+                Teknik jump-cut mulus, multi-camera punch-in, subtitle kinetik dinamis, dan sound design multi-layer untuk memaksimalkan retensi video YouTube & executive podcast.
+              </p>
+              <div class="bento-stats">
+                <span class="bento-stat-pill"><strong>1.4M</strong> Views</span>
+                <span class="bento-stat-pill"><strong>68%</strong> Avg Retention</span>
+                <span class="bento-stat-pill">Premiere Pro • After Effects</span>
+              </div>
+            </div>
+            <div class="bento-preview-visual">
+              <svg viewBox="0 0 400 240" width="100%" height="100%">
+                <rect width="400" height="240" fill="#0f172a" rx="8"/>
+                <circle cx="200" cy="110" r="50" fill="#f43f5e" opacity="0.15"/>
+                <circle cx="200" cy="110" r="30" fill="#f43f5e"/>
+                <polygon points="194,98 214,110 194,122" fill="#ffffff"/>
+                <rect x="60" y="180" width="280" height="28" rx="6" fill="#1e293b"/>
+                <text x="200" y="199" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#facc15" text-anchor="middle">"SCALE SYSTEMS OR STALL"</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Bento Item 2: Social Media Carousel -->
+          <div class="bento-card" onclick="document.querySelector('[data-id=\'sm-finscale\']')?.click();" tabindex="0" role="button" aria-label="View Social Media Case Study">
+            <div class="bento-badge badge-social">Pillar 2 • Social Growth</div>
+            <div class="bento-content">
+              <h3 class="bento-title">10-Slide Viral Carousels</h3>
+              <p class="bento-desc">
+                Struktur visual hook geser tanpa batas, palet high-contrast, dan call-to-action bookmark yang menghasilkan lonjakan follower organik.
+              </p>
+              <div class="bento-stats">
+                <span class="bento-stat-pill"><strong>4.8M</strong> Reach</span>
+                <span class="bento-stat-pill"><strong>32.4K</strong> Saves</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Item 3: Motion Graphics -->
+          <div class="bento-card" onclick="document.querySelector('[data-id=\'ve-motion-nexus\']')?.click();" tabindex="0" role="button" aria-label="View Motion Graphics Case Study">
+            <div class="bento-badge badge-motion">Pillar 3 • Motion Design</div>
+            <div class="bento-content">
+              <h3 class="bento-title">2D Kinetic Motion Explainer</h3>
+              <p class="bento-desc">
+                Animasi SaaS product launch dengan fluid easing, transisi isometric, dan sinkronisasi audio foley yang memikat audiens global.
+              </p>
+              <div class="bento-stats">
+                <span class="bento-stat-pill"><strong>#1</strong> Product Hunt</span>
+                <span class="bento-stat-pill">60 FPS 4K</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Item 4: Editorial Document Layout -->
+          <div class="bento-card bento-card-wide" onclick="document.querySelector('[data-id=\'dl-apex-annual\']')?.click();" tabindex="0" role="button" aria-label="View Document Layout Case Study">
+            <div class="bento-badge badge-doc">Pillar 4 • Editorial Layout</div>
+            <div class="bento-content">
+              <h3 class="bento-title">Corporate Annual ESG Report & Financial Tables</h3>
+              <p class="bento-desc">
+                Penyusunan tata letak 56 halaman dengan 12-column Swiss grid InDesign, visualisasi 34 tabel finansial, serta PDF interaktif bersertifikasi prepress.
+              </p>
+              <div class="bento-stats">
+                <span class="bento-stat-pill"><strong>56</strong> Pages</span>
+                <span class="bento-stat-pill">GRI Compliance</span>
+                <span class="bento-stat-pill">InDesign • Acrobat Pro</span>
+              </div>
             </div>
           </div>
         </div>
@@ -191,89 +290,89 @@
     <section class="section" id="works">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Featured Works</span>
-          <h2 class="section-title">Curated Creative Portfolio</h2>
+          <span class="section-tag">Interactive Gallery</span>
+          <h2 class="section-title">All Curated Projects</h2>
           <p class="section-desc">
-            Eksplorasi karya terpilih dalam 4 pilar utama: Graphic Design, Social Media Post, Video Editing (Talking Head & Motion Graphics), dan Document Layout.
+            Pilih kategori di bawah untuk meninjau detail teknis, metrik hasil, dan studi kasus setiap proyek secara mendalam.
           </p>
         </div>
 
         <!-- Filter Buttons -->
-        <div class="filter-wrapper">
-          <button class="filter-btn active" data-filter="all">
+        <div class="filter-wrapper" role="tablist" aria-label="Filter portfolio categories">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
             <span>All Works</span>
             <span class="filter-count">10</span>
           </button>
-          <button class="filter-btn" data-filter="graphic-design">
+          <button class="filter-btn" data-filter="graphic-design" role="tab" aria-selected="false">
             <span>Graphic Design</span>
             <span class="filter-count">3</span>
           </button>
-          <button class="filter-btn" data-filter="social-media">
+          <button class="filter-btn" data-filter="social-media" role="tab" aria-selected="false">
             <span>Social Media Post</span>
             <span class="filter-count">3</span>
           </button>
-          <button class="filter-btn" data-filter="video-editing">
+          <button class="filter-btn" data-filter="video-editing" role="tab" aria-selected="false">
             <span>Video Editing</span>
             <span class="filter-count">4</span>
           </button>
-          <button class="filter-btn" data-filter="talking-head">
+          <button class="filter-btn" data-filter="talking-head" role="tab" aria-selected="false">
             <span>• Talking Head</span>
             <span class="filter-count">2</span>
           </button>
-          <button class="filter-btn" data-filter="motion-graphic">
+          <button class="filter-btn" data-filter="motion-graphic" role="tab" aria-selected="false">
             <span>• Motion Graphics</span>
             <span class="filter-count">2</span>
           </button>
-          <button class="filter-btn" data-filter="document-layout">
+          <button class="filter-btn" data-filter="document-layout" role="tab" aria-selected="false">
             <span>Document Layout</span>
             <span class="filter-count">3</span>
           </button>
         </div>
 
         <!-- Dynamic Portfolio Cards Grid -->
-        <div class="portfolio-grid" id="portfolioGrid">
+        <div class="portfolio-grid" id="portfolioGrid" role="region" aria-live="polite">
           <!-- Rendered dynamically by js/main.js -->
         </div>
       </div>
     </section>
 
-    <!-- SERVICES / 4 PILLARS SECTION -->
+    <!-- SERVICES BREAKDOWN SECTION -->
     <section class="section" id="services" style="background: var(--bg-secondary);">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Core Competencies</span>
-          <h2 class="section-title">What I Bring to the Table</h2>
+          <h2 class="section-title">End-to-End Creative Services</h2>
           <p class="section-desc">
-            Solusi visual end-to-end mulai dari strategi konsep, eksekusi visual beresolusi tinggi, hingga delivery tepat waktu.
+            Dari skrip & storyboard hingga penyerahan file master dengan standar industri kelas atas.
           </p>
         </div>
 
         <div class="services-grid">
-          <!-- Service 1 -->
+          <!-- Service 1: Graphic Design -->
           <div class="service-card">
-            <div class="service-icon-box">
+            <div class="service-icon-box" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
             </div>
             <h3 class="service-title">Graphic Design</h3>
             <p class="service-desc">
-              Identitas visual komprehensif, desain logo geometris, materi promosi cetak & digital, billboard, kemasan produk, dan vector art.
+              Identitas visual komprehensif, desain logo geometris, materi promosi cetak & digital, billboard LED, kemasan produk, dan vector art.
             </p>
           </div>
 
-          <!-- Service 2 -->
+          <!-- Service 2: Social Media Post -->
           <div class="service-card">
-            <div class="service-icon-box" style="background: rgba(16, 185, 129, 0.12); color: #10b981;">
+            <div class="service-icon-box" style="background: rgba(16, 185, 129, 0.12); color: #10b981;" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </div>
             <h3 class="service-title">Social Media Post</h3>
             <p class="service-desc">
-              Carousel Instagram edukatif bernilai retensi tinggi, kurasi 9-grid feed estetik, desain story interaktif, dan infografis B2B LinkedIn.
+              Carousel Instagram edukatif berretensi tinggi, kurasi 9-grid feed estetik, desain story interaktif, dan infografis B2B LinkedIn.
             </p>
           </div>
 
-          <!-- Service 3 -->
+          <!-- Service 3: Talking Head Video -->
           <div class="service-card">
-            <div class="service-icon-box" style="background: rgba(244, 63, 94, 0.12); color: #f43f5e;">
+            <div class="service-icon-box" style="background: rgba(244, 63, 94, 0.12); color: #f43f5e;" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
             </div>
             <h3 class="service-title">Talking Head Video</h3>
@@ -282,20 +381,20 @@
             </p>
           </div>
 
-          <!-- Service 4 -->
+          <!-- Service 4: Motion Graphics -->
           <div class="service-card">
-            <div class="service-icon-box" style="background: rgba(168, 85, 247, 0.12); color: #a855f7;">
+            <div class="service-icon-box" style="background: rgba(168, 85, 247, 0.12); color: #a855f7;" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
             </div>
             <h3 class="service-title">Motion Graphics</h3>
             <p class="service-desc">
-              Animasi 2D After Effects, SaaS explainer video, teaser peluncuran produk, animasi logo 3D, kinetik tipografi, dan UI prototype teaser.
+              Animasi 2D After Effects, SaaS explainer video, teaser peluncuran produk, animasi logo 3D, kinetik tipografi, dan UI prototype showcase.
             </p>
           </div>
 
-          <!-- Service 5 -->
+          <!-- Service 5: Document Layout -->
           <div class="service-card">
-            <div class="service-icon-box" style="background: rgba(6, 182, 212, 0.12); color: #06b6d4;">
+            <div class="service-icon-box" style="background: rgba(6, 182, 212, 0.12); color: #06b6d4;" aria-hidden="true">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
             </div>
             <h3 class="service-title">Document Layout</h3>
@@ -314,15 +413,15 @@
           <span class="section-tag">Software Arsenal</span>
           <h2 class="section-title">Tools & Technical Mastery</h2>
           <p class="section-desc">
-            Kombinasi aplikasi industri standar untuk menjamin presisi visual, efisiensi rendering, dan kesiapan produksi cetak maupun digital.
+            Tingkat kemahiran pada aplikasi industri standar untuk menjamin presisi visual, rendering cepat, dan konsistensi lintas platform.
           </p>
         </div>
 
         <div class="skills-wrapper">
-          <!-- Category 1: Video & Motion -->
+          <!-- Video & Motion -->
           <div class="skill-category-box">
             <h3 class="skill-category-title">
-              <span style="color: #f43f5e;">🎬</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
               <span>Video & Motion Design</span>
             </h3>
             <div class="skill-list">
@@ -364,10 +463,10 @@
             </div>
           </div>
 
-          <!-- Category 2: Graphic & Social Media -->
+          <!-- Graphic & Social Design -->
           <div class="skill-category-box">
             <h3 class="skill-category-title">
-              <span style="color: #6366f1;">🎨</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path></svg>
               <span>Graphic & Social Design</span>
             </h3>
             <div class="skill-list">
@@ -409,10 +508,10 @@
             </div>
           </div>
 
-          <!-- Category 3: Document Layout & Publishing -->
+          <!-- Document & Editorial Layout -->
           <div class="skill-category-box">
             <h3 class="skill-category-title">
-              <span style="color: #06b6d4;">📑</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
               <span>Document & Editorial Layout</span>
             </h3>
             <div class="skill-list">
@@ -562,7 +661,9 @@
 
           <div class="contact-methods">
             <div class="contact-method-item">
-              <div class="method-icon">✉️</div>
+              <div class="method-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
               <div>
                 <div class="method-label">Direct Email</div>
                 <div class="method-value">imamteguh.porto@gmail.com</div>
@@ -570,7 +671,9 @@
             </div>
 
             <div class="contact-method-item">
-              <div class="method-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">💬</div>
+              <div class="method-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              </div>
               <div>
                 <div class="method-label">WhatsApp / Telegram</div>
                 <div class="method-value">+62 812-3456-7890 (Fast Response)</div>
@@ -578,7 +681,9 @@
             </div>
 
             <div class="contact-method-item">
-              <div class="method-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;">📍</div>
+              <div class="method-icon" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4;" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
               <div>
                 <div class="method-label">Location & Availability</div>
                 <div class="method-value">Indonesia • Available Worldwide (Remote)</div>
@@ -587,39 +692,41 @@
           </div>
 
           <!-- Social Media Profiles -->
-          <div style="margin-top: 1rem;">
+          <div style="margin-top: 1.5rem;">
             <div class="method-label" style="margin-bottom: 0.75rem;">Follow & Connect:</div>
             <div class="social-links-row">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub" aria-label="GitHub">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              <a href="https://github.com/imamsakul" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub" aria-label="GitHub Profile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn" aria-label="LinkedIn Profile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram" aria-label="Instagram Profile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               </a>
-              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="social-btn" title="Behance" aria-label="Behance">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.248 0-6.625-2.926-6.625-6.797 0-4.039 2.541-6.903 6.467-6.903 4.148 0 6.035 3.018 5.751 6.7h-9.289c.121 2.072 1.487 3.327 3.486 3.327 1.492 0 2.65-.678 3.195-1.827l2.116 2.5zm-5.783-6.5c-.068-1.503-.984-2.5-2.5-2.5-1.554 0-2.477.994-2.573 2.5h5.073zm-13.943 6.5h-4v-14h5.279c3.086 0 5.121 1.542 5.121 4.225 0 1.549-.801 2.923-2.118 3.551 1.777.625 2.718 2.227 2.718 4.024 0 3.067-2.316 4.2-5.719 4.2h-1.281zm0-8.25h1.161c1.477 0 2.264-.678 2.264-1.75s-.787-1.75-2.264-1.75h-1.161v3.5zm0 5.25h1.364c1.657 0 2.536-.786 2.536-2.036 0-1.249-.879-2.036-2.536-2.036h-1.364v4.072z"/></svg>
+              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="social-btn" title="Behance" aria-label="Behance Profile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.248 0-6.625-2.926-6.625-6.797 0-4.039 2.541-6.903 6.467-6.903 4.148 0 6.035 3.018 5.751 6.7h-9.289c.121 2.072 1.487 3.327 3.486 3.327 1.492 0 2.65-.678 3.195-1.827l2.116 2.5zm-5.783-6.5c-.068-1.503-.984-2.5-2.5-2.5-1.554 0-2.477.994-2.573 2.5h5.073zm-13.943 6.5h-4v-14h5.279c3.086 0 5.121 1.542 5.121 4.225 0 1.549-.801 2.923-2.118 3.551 1.777.625 2.718 2.227 2.718 4.024 0 3.067-2.316 4.2-5.719 4.2h-1.281zm0-8.25h1.161c1.477 0 2.264-.678 2.264-1.75s-.787-1.75-2.264-1.75h-1.161v3.5zm0 5.25h1.364c1.657 0 2.536-.786 2.536-2.036 0-1.249-.879-2.036-2.536-2.036h-1.364v4.072z"/></svg>
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube" aria-label="YouTube">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube" aria-label="YouTube Channel">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Contact Form -->
+        <!-- Contact Form with Micro-Interactions -->
         <div class="contact-form-wrapper">
-          <form id="contactForm">
+          <form id="contactForm" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="userName" class="form-label">Nama Lengkap *</label>
-                <input type="text" id="userName" class="form-input" placeholder="Contoh: Budi Santoso" required>
+                <input type="text" id="userName" class="form-input" placeholder="Contoh: Budi Santoso" required autocomplete="name">
+                <span class="form-error-msg" id="nameError" role="alert"></span>
               </div>
               <div class="form-group">
                 <label for="userEmail" class="form-label">Email Aktif *</label>
-                <input type="email" id="userEmail" class="form-input" placeholder="budi@company.com" required>
+                <input type="email" id="userEmail" class="form-input" placeholder="budi@company.com" required autocomplete="email">
+                <span class="form-error-msg" id="emailError" role="alert"></span>
               </div>
             </div>
 
@@ -651,11 +758,12 @@
             <div class="form-group">
               <label for="projectMessage" class="form-label">Ceritakan Kebutuhan Proyek *</label>
               <textarea id="projectMessage" class="form-textarea" placeholder="Jelaskan gambaran proyek, target waktu, atau link referensi footage/moodboard..." required></textarea>
+              <span class="form-error-msg" id="messageError" role="alert"></span>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.95rem;">
               <span>Kirim Pesan & Konsultasi Gratis</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
           </form>
         </div>
@@ -668,7 +776,7 @@
     <div class="container">
       <div class="footer-top">
         <div class="brand-logo">
-          <span class="logo-badge">IT</span>
+          <span class="logo-badge" aria-hidden="true">IT</span>
           <span class="brand-text">Imam Teguh</span>
         </div>
         <p style="color: var(--text-secondary); max-width: 500px; font-size: 0.9rem;">
@@ -680,8 +788,9 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2025 Imam Teguh. All rights reserved. Built with precision and passion.</div>
+        <div>&copy; 2026 Imam Teguh. All rights reserved. Crafted with UI/UX Pro Max precision.</div>
         <div style="display: flex; gap: 1.5rem;">
+          <a href="#bento" style="color: var(--text-muted);">Highlights</a>
           <a href="#works" style="color: var(--text-muted);">Portfolio</a>
           <a href="#services" style="color: var(--text-muted);">Services</a>
           <a href="#contact" style="color: var(--text-muted);">Contact</a>
@@ -691,16 +800,15 @@
   </footer>
 
   <!-- CASE STUDY DETAIL MODAL DIALOG -->
-  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Case Study Modal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
 
       <div class="modal-body">
-        <!-- Interactive Media Preview Area -->
         <div class="modal-preview-wrapper" id="modalMediaArea">
-          <!-- Injected dynamically based on project type (Video Player, Carousel, Document Viewer) -->
+          <!-- Injected dynamically -->
         </div>
 
         <div style="margin-bottom: 1.5rem;">
@@ -743,7 +851,7 @@
           <!-- Injected dynamically -->
         </div>
 
-        <!-- Modal Bottom Navigation (Prev / Next project) -->
+        <!-- Modal Bottom Navigation -->
         <div class="modal-nav-footer">
           <button class="btn btn-outline" id="modalPrevProjectBtn" style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">
             <span>← Previous Project</span>
@@ -760,8 +868,8 @@
   </div>
 
   <!-- TOAST NOTIFICATION CONTAINER -->
-  <div class="toast-box" id="toastNotification">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+  <div class="toast-box" id="toastNotification" role="status" aria-live="polite">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
     <span id="toastMessage">Notification</span>
   </div>
 
