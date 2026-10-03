@@ -366,10 +366,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const tagsHtml = project.tags.slice(0, 3).map(tag => `<span class="tag-pill">${tag}</span>`).join('');
       const subBadgeText = project.subLabel ? ` • ${project.subLabel}` : '';
+      const thumbnailMedia = project.image
+        ? `<img src="${project.image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">`
+        : (project.svgIllustration || `<div style="width:100%;height:100%;background:#0c1017;display:flex;align-items:center;justify-content:center;color:#64748b;">${project.title}</div>`);
 
       card.innerHTML = `
         <div class="project-thumbnail">
-          ${project.svgIllustration}
+          ${thumbnailMedia}
           <div class="thumbnail-overlay">
             <span class="overlay-btn">
               <span>View Case Study</span>
