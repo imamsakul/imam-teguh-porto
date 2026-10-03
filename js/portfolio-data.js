@@ -514,21 +514,21 @@ const PORTFOLIO_DATA = [
     previewType: "video",
     videoDuration: "00:15 Ident",
     videoTopic: "Brand Sonic & Motion Ident",
-    accentColor: "#a855f7",
-    themeGradient: "linear-gradient(135deg, #a855f7 0%, #7e22ce 100%)",
+    accentColor: "#2563eb",
+    themeGradient: "#2563eb",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="600" height="400" fill="#0f0728"/>
-        <circle cx="300" cy="180" r="110" fill="#7e22ce" opacity="0.2"/>
+        <rect width="600" height="400" fill="#07090e"/>
+        <circle cx="300" cy="180" r="110" fill="#2563eb" opacity="0.12"/>
         <g transform="translate(300, 180)">
           <!-- Glowing Vortex Lines -->
-          <circle cx="0" cy="0" r="70" fill="none" stroke="#a855f7" stroke-width="3" stroke-dasharray="15 8"/>
-          <circle cx="0" cy="0" r="50" fill="none" stroke="#c084fc" stroke-width="4" stroke-dasharray="25 10"/>
+          <circle cx="0" cy="0" r="70" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="15 8"/>
+          <circle cx="0" cy="0" r="50" fill="none" stroke="#3b82f6" stroke-width="4" stroke-dasharray="25 10"/>
           <circle cx="0" cy="0" r="30" fill="none" stroke="#ffffff" stroke-width="2"/>
-          <circle cx="0" cy="0" r="12" fill="#e9d5ff"/>
+          <circle cx="0" cy="0" r="12" fill="#ffffff"/>
         </g>
         <text x="300" y="320" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="6">FINFLOW</text>
-        <text x="300" y="345" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#a855f7" text-anchor="middle" letter-spacing="4">GLOBAL PAY IDENT</text>
+        <text x="300" y="345" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#38bdf8" text-anchor="middle" letter-spacing="4">GLOBAL PAY IDENT</text>
       </svg>
     `
   },
