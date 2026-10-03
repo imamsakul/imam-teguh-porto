@@ -31,35 +31,24 @@ const PORTFOLIO_DATA = [
     details: "Lumina required a visual identity that balanced scientific authority with human warmth. The solution was built around an interconnected hexagonal molecular mark fused with a soft gradient palette of bio-cyan and deep indigo. The project delivered comprehensive brand guidelines, corporate stationery, exhibition roll-ups, and 3D merchandise mockups.",
     tools: ["Adobe Illustrator", "Adobe Photoshop", "Figma"],
     previewType: "image",
-    accentColor: "#6366f1",
-    themeGradient: "linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%)",
+    accentColor: "#2563eb",
+    themeGradient: "#2563eb",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="luminaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#4f46e5"/>
-            <stop offset="50%" stop-color="#8b5cf6"/>
-            <stop offset="100%" stop-color="#06b6d4"/>
-          </linearGradient>
-          <filter id="glow1" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="15" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-          </filter>
-        </defs>
-        <rect width="600" height="400" fill="#0f172a"/>
-        <circle cx="300" cy="180" r="140" fill="url(#luminaGrad)" opacity="0.15" filter="url(#glow1)"/>
+        <rect width="600" height="400" fill="#07090e"/>
+        <circle cx="300" cy="180" r="140" fill="#2563eb" opacity="0.12"/>
         <!-- Brand Mark Hexagon -->
         <g transform="translate(300, 170)">
-          <polygon points="0,-85 74,-42 74,42 0,85 -74,42 -74,-42" fill="none" stroke="url(#luminaGrad)" stroke-width="6" stroke-linejoin="round"/>
-          <polygon points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30" fill="none" stroke="#38bdf8" stroke-width="3" opacity="0.7"/>
-          <circle cx="0" cy="0" r="22" fill="url(#luminaGrad)" filter="url(#glow1)"/>
+          <polygon points="0,-85 74,-42 74,42 0,85 -74,42 -74,-42" fill="none" stroke="#2563eb" stroke-width="6" stroke-linejoin="round"/>
+          <polygon points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30" fill="none" stroke="#3b82f6" stroke-width="3" opacity="0.8"/>
+          <circle cx="0" cy="0" r="22" fill="#2563eb"/>
           <circle cx="0" cy="0" r="12" fill="#ffffff"/>
           <!-- Orbit nodes -->
           <circle cx="74" cy="-42" r="8" fill="#38bdf8"/>
-          <circle cx="-74" cy="42" r="8" fill="#a855f7"/>
-          <circle cx="0" cy="85" r="8" fill="#06b6d4"/>
+          <circle cx="-74" cy="42" r="8" fill="#60a5fa"/>
+          <circle cx="0" cy="85" r="8" fill="#2563eb"/>
         </g>
-        <text x="300" y="305" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#f8fafc" text-anchor="middle" letter-spacing="4">LUMINA BIOTECH</text>
+        <text x="300" y="305" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="4">LUMINA BIOTECH</text>
         <text x="300" y="335" font-family="'Inter', sans-serif" font-size="13" font-weight="500" fill="#94a3b8" text-anchor="middle" letter-spacing="3">ADVANCED BIOSCIENCE & HUMAN WELLNESS</text>
       </svg>
     `
