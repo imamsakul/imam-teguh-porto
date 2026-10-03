@@ -501,15 +501,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (modalMediaArea) {
       if (project.previewType === 'video') {
-        renderVideoPlayer(modalMediaArea, project);
+        if (project.youtubeId) {
+          modalMediaArea.innerHTML = `
+            <div style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); overflow: hidden; background: #000;">
+              <iframe src="https://www.youtube-nocookie.com/embed/${project.youtubeId}?autoplay=1" title="${project.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+            </div>
+          `;
+        } else if (project.videoUrl) {
+          modalMediaArea.innerHTML = `
+            <div style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); overflow: hidden; background: #000;">
+              <video src="${project.videoUrl}" controls autoplay playsinline style="width: 100%; height: 100%; object-fit: contain;"></video>
+            </div>
+          `;
+        } else {
+          renderVideoPlayer(modalMediaArea, project);
+        }
       } else if (project.previewType === 'carousel' && project.carouselSlides) {
         renderCarouselViewer(modalMediaArea, project);
       } else if (project.previewType === 'document' && project.docPages) {
         renderDocumentViewer(modalMediaArea, project);
+      } else if (project.image) {
+        modalMediaArea.innerHTML = `
+          <div style="width: 100%; display: flex; justify-content: center; align-items: center; background: #07090e; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-color);">
+            <img src="${project.image}" alt="${project.title}" style="max-width: 100%; max-height: 520px; object-fit: contain;">
+          </div>
+        `;
       } else {
         modalMediaArea.innerHTML = `
           <div style="width: 100%; aspect-ratio: 16/10; overflow: hidden; border-radius: var(--radius-md);">
-            ${project.svgIllustration}
+            ${project.svgIllustration || ''}
           </div>
         `;
       }
