@@ -1,6 +1,12 @@
 /**
- * Imam Teguh Portfolio - Interactive Controller
- * Handles filtering, case study modals, media simulators, theme toggling, and forms.
+ * Imam Teguh Portfolio - Interactive Controller (UI/UX Pro Max Edition)
+ * Features:
+ * - Bento spotlight effect (radial mouse glow)
+ * - Number counter animation on viewport entry
+ * - Touch & keyboard accessibility (ARIA, Focus trap, Esc key)
+ * - Interactive media simulators (Video playback, Carousel swipe, Document inspection)
+ * - Dark & Light mode theme persistence
+ * - Client-side form validation with accessible live region
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isVideoPlaying = false;
   let videoProgressTimer = null;
   let videoProgressPercent = 30;
+  let previousActiveElement = null;
 
   // DOM Elements
   const portfolioGrid = document.getElementById('portfolioGrid');
@@ -45,8 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateThemeIcon = (theme) => {
     if (!themeToggleBtn) return;
     themeToggleBtn.innerHTML = theme === 'dark' 
-      ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
-      : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+      ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
+      : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
   };
 
   if (themeToggleBtn) {
@@ -54,22 +61,79 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initTheme();
 
-  // Mobile navigation
+  // Mobile navigation drawer with ARIA expanded state
   if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => {
-      navbar.classList.toggle('nav-mobile-open');
+      const isOpen = navbar.classList.toggle('nav-mobile-open');
+      mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
 
-  // Close mobile nav when clicking a link
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       navbar.classList.remove('nav-mobile-open');
+      if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
     });
   });
 
   // ==========================================
-  // 2. RENDER PORTFOLIO ITEMS
+  // 2. MOUSE SPOTLIGHT (BENTO CARDS)
+  // ==========================================
+  const cards = document.querySelectorAll('.bento-card, .project-card, .service-card');
+  document.addEventListener('mousemove', (e) => {
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  // ==========================================
+  // 3. STATS NUMBER COUNTER ANIMATION
+  // ==========================================
+  const statsElements = document.querySelectorAll('.stat-number');
+  const animateStats = () => {
+    statsElements.forEach(el => {
+      const target = parseInt(el.getAttribute('data-target') || '0', 10);
+      if (!target) return;
+      let start = 0;
+      const duration = 1500;
+      const stepTime = 30;
+      const steps = duration / stepTime;
+      const increment = target / steps;
+
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          clearInterval(timer);
+          if (target === 150) el.textContent = '150+';
+          else if (target === 5) el.textContent = '5+ Years';
+          else if (target === 25) el.textContent = '25M+';
+          else if (target === 99) el.textContent = '99%';
+        } else {
+          el.textContent = Math.floor(start) + '+';
+        }
+      }, stepTime);
+    });
+  };
+
+  const statsSection = document.querySelector('.hero-stats-row');
+  if (statsSection && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStats();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    observer.observe(statsSection);
+  }
+
+  // ==========================================
+  // 4. RENDER PORTFOLIO ITEMS
   // ==========================================
   const renderPortfolio = (category = 'all') => {
     if (!portfolioGrid) return;
@@ -88,8 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('article');
       card.className = 'project-card';
       card.setAttribute('data-id', project.id);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', `View ${project.title} case study`);
 
-      // Badge class
       let badgeClass = 'badge-graphic';
       if (project.category === 'video-editing') {
         badgeClass = project.subCategory === 'motion-graphic' ? 'badge-motion' : 'badge-video';
@@ -108,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="thumbnail-overlay">
             <span class="overlay-btn">
               <span>View Case Study</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </span>
           </div>
           <span class="project-category-badge ${badgeClass}">${project.categoryLabel}${subBadgeText}</span>
@@ -126,10 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       card.addEventListener('click', () => openModal(project.id));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(project.id);
+        }
+      });
+
       portfolioGrid.appendChild(card);
     });
 
-    // Update filter count badge
     updateFilterCounts();
   };
 
@@ -156,20 +228,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Filter Buttons click handler
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
+      filterButtons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       currentFilter = btn.getAttribute('data-filter');
       renderPortfolio(currentFilter);
     });
   });
 
   // ==========================================
-  // 3. CASE STUDY DETAIL MODAL & INTERACTIVE MEDIA
+  // 5. CASE STUDY DETAIL MODAL & INTERACTIVE MEDIA
   // ==========================================
   const openModal = (projectId) => {
     const project = PORTFOLIO_DATA.find(p => p.id === projectId);
     if (!project || !modalBackdrop) return;
 
+    previousActiveElement = document.activeElement;
     activeModalProject = project;
     activeCarouselSlide = 0;
     stopVideoSimulator();
@@ -193,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalCategory) modalCategory.textContent = `${project.categoryLabel} ${project.subLabel ? `(${project.subLabel})` : ''}`;
     if (modalDetails) modalDetails.textContent = project.details;
 
-    // Render Stats
     if (modalStatsArea) {
       modalStatsArea.innerHTML = project.stats.map(s => `
         <div class="modal-stat-box">
@@ -203,14 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
     }
 
-    // Render Tools
     if (modalTools) {
       modalTools.innerHTML = project.tools.map(tool => `
         <span class="tag-pill" style="border: 1px solid var(--border-color);">${tool}</span>
       `).join('');
     }
 
-    // Render Media based on Preview Type
     if (modalMediaArea) {
       if (project.previewType === 'video') {
         renderVideoPlayer(modalMediaArea, project);
@@ -219,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (project.previewType === 'document' && project.docPages) {
         renderDocumentViewer(modalMediaArea, project);
       } else {
-        // Standard Image / Graphic Design
         modalMediaArea.innerHTML = `
           <div style="width: 100%; aspect-ratio: 16/10; overflow: hidden; border-radius: var(--radius-md);">
             ${project.svgIllustration}
@@ -229,14 +302,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     modalBackdrop.classList.add('open');
+    modalBackdrop.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    modalCloseBtn?.focus();
   };
 
   const closeModal = () => {
     if (!modalBackdrop) return;
     modalBackdrop.classList.remove('open');
+    modalBackdrop.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     stopVideoSimulator();
+    if (previousActiveElement) previousActiveElement.focus();
   };
 
   if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
@@ -252,9 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ==========================================
-  // MEDIA COMPONENT 1: INTERACTIVE VIDEO PLAYER
-  // ==========================================
+  // Video Simulator
   const renderVideoPlayer = (container, project) => {
     isVideoPlaying = false;
     videoProgressPercent = 35;
@@ -265,12 +340,12 @@ document.addEventListener('DOMContentLoaded', () => {
           ${project.svgIllustration}
         </div>
         <div class="player-controls-bar">
-          <div class="player-progress-bar" id="playerScrubber">
+          <div class="player-progress-bar" id="playerScrubber" role="slider" aria-label="Video scrubber" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
             <div class="player-progress-fill" id="playerFill" style="width: ${videoProgressPercent}%;"></div>
           </div>
           <div class="player-buttons-row">
             <div class="player-left-controls">
-              <button class="player-ctrl-btn" id="playPauseBtn" title="Play/Pause">
+              <button class="player-ctrl-btn" id="playPauseBtn" aria-label="Play or Pause Video">
                 <svg id="playIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
               </button>
               <div class="audio-wave-box" id="audioWaveBox" style="opacity: 0.5;">
@@ -283,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <span class="tag-pill" style="color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">4K 60FPS</span>
-              <button class="player-ctrl-btn" id="soundToggleBtn" title="Sound Mute/Unmute">
+              <button class="player-ctrl-btn" id="soundToggleBtn" aria-label="Mute or Unmute audio">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
               </button>
             </div>
@@ -328,6 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const clickX = e.clientX - rect.left;
         videoProgressPercent = Math.min(100, Math.max(0, (clickX / rect.width) * 100));
         playerFill.style.width = `${videoProgressPercent}%`;
+        playerScrubber.setAttribute('aria-valuenow', Math.round(videoProgressPercent));
       });
     }
   };
@@ -355,22 +431,19 @@ document.addEventListener('DOMContentLoaded', () => {
     isVideoPlaying = false;
   };
 
-  // ==========================================
-  // MEDIA COMPONENT 2: INTERACTIVE CAROUSEL VIEWER
-  // ==========================================
+  // Carousel Viewer
   const renderCarouselViewer = (container, project) => {
     const slides = project.carouselSlides;
     container.innerHTML = `
-      <div class="modal-carousel-box">
+      <div class="modal-carousel-box" tabindex="0" aria-label="Social media carousel viewer">
         <div class="carousel-slide-view" id="carouselSlideContent">
-          <!-- Dynamic slide content -->
         </div>
         <div class="carousel-nav-row">
-          <button class="carousel-arrow-btn" id="prevSlideBtn" title="Previous Slide">
+          <button class="carousel-arrow-btn" id="prevSlideBtn" aria-label="Previous Slide">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
           <div class="carousel-indicators" id="carouselIndicators"></div>
-          <button class="carousel-arrow-btn" id="nextSlideBtn" title="Next Slide">
+          <button class="carousel-arrow-btn" id="nextSlideBtn" aria-label="Next Slide">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
         </div>
@@ -414,15 +487,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // ==========================================
-  // MEDIA COMPONENT 3: INTERACTIVE DOCUMENT VIEWER
-  // ==========================================
+  // Document Viewer
   const renderDocumentViewer = (container, project) => {
-    let currentPageIdx = 0;
     const pages = project.docPages || [];
 
     container.innerHTML = `
-      <div style="background: #020617; border-radius: var(--radius-md); padding: 1.5rem; text-align: center;">
+      <div style="background: #040711; border-radius: var(--radius-md); padding: 1.5rem; text-align: center;">
         <div style="margin-bottom: 1rem; border-radius: var(--radius-sm); overflow: hidden;">
           ${project.svgIllustration}
         </div>
@@ -449,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Next / Previous Project Navigation in Modal
+  // Prev / Next Project buttons
   const modalPrevProjectBtn = document.getElementById('modalPrevProjectBtn');
   const modalNextProjectBtn = document.getElementById('modalNextProjectBtn');
 
@@ -472,11 +542,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. CONTACT FORM & FEEDBACK
+  // 6. CONTACT FORM & ACCESSIBLE FEEDBACK
   // ==========================================
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      
+      const nameInput = document.getElementById('userName');
+      const emailInput = document.getElementById('userEmail');
+      const messageInput = document.getElementById('projectMessage');
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const messageError = document.getElementById('messageError');
+
+      let isValid = true;
+
+      // Validate name
+      if (!nameInput.value.trim()) {
+        nameError.textContent = "Nama lengkap harus diisi.";
+        nameError.classList.add('visible');
+        isValid = false;
+      } else {
+        nameError.classList.remove('visible');
+      }
+
+      // Validate email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        emailError.textContent = "Format email tidak valid.";
+        emailError.classList.add('visible');
+        isValid = false;
+      } else {
+        emailError.classList.remove('visible');
+      }
+
+      // Validate message
+      if (!messageInput.value.trim()) {
+        messageError.textContent = "Pesan kebutuhan proyek harus diisi.";
+        messageError.classList.add('visible');
+        isValid = false;
+      } else {
+        messageError.classList.remove('visible');
+      }
+
+      if (!isValid) return;
+
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
 
@@ -490,8 +600,8 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.reset();
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
-        showToast("✨ Message sent! Imam will get back to you within 24 hours.");
-      }, 1200);
+        showToast("✨ Pesan terkirim! Imam akan merespons dalam 24 jam.");
+      }, 1000);
     });
   }
 
@@ -512,7 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const email = "imamteguh.porto@gmail.com";
       navigator.clipboard.writeText(email).then(() => {
-        showToast("📋 Email copied: " + email);
+        showToast("📋 Email disalin: " + email);
       }).catch(() => {
         showToast("Email: " + email);
       });
