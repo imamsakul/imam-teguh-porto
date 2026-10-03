@@ -1,12 +1,14 @@
 /**
- * Imam Teguh Portfolio - Interactive Controller (UI/UX Pro Max Edition)
- * Features:
- * - Bento spotlight effect (radial mouse glow)
- * - Number counter animation on viewport entry
- * - Touch & keyboard accessibility (ARIA, Focus trap, Esc key)
- * - Interactive media simulators (Video playback, Carousel swipe, Document inspection)
- * - Dark & Light mode theme persistence
- * - Client-side form validation with accessible live region
+ * Imam Teguh Portfolio - Interactive Controller (AntiSlopUI + UI/UX Pro Max Master Edition)
+ * Verified against AntiSlopUI standards:
+ * 1. Lenis Smooth Scroll coupled with GSAP Ticker (lagSmoothing(0))
+ * 2. Fine-pointer gated custom fluid cursor using gsap.quickTo & context-aware states
+ * 3. Elastic magnetic button interactions
+ * 4. ScrollTrigger coordinated section reveals & hero choreography
+ * 5. Radial mouse spotlight on Bento cards
+ * 6. Interactive media simulators (Video playback, Carousel slides, Document viewer)
+ * 7. Dark / Light mode persistence with WCAG AA compliance
+ * 8. Form validation with accessible live regions and modal focus traps
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,8 +33,204 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastMessage = document.getElementById('toastMessage');
   const contactForm = document.getElementById('contactForm');
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+
   // ==========================================
-  // 1. THEME TOGGLE (DARK / LIGHT)
+  // 1. LENIS SMOOTH SCROLL + GSAP TICKER
+  // ==========================================
+  let lenis = null;
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  if (typeof Lenis !== 'undefined' && !prefersReducedMotion) {
+    lenis = new Lenis({
+      lerp: 0.085,
+      wheelMultiplier: 1.0,
+      smoothWheel: true,
+      syncTouch: false,
+      autoRaf: false
+    });
+
+    if (typeof ScrollTrigger !== 'undefined') {
+      lenis.on('scroll', ScrollTrigger.update);
+    }
+
+    if (typeof gsap !== 'undefined') {
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    }
+  }
+
+  // Smooth anchor navigation with Lenis
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          if (navbar) navbar.classList.remove('nav-mobile-open');
+          if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
+
+          if (lenis) {
+            lenis.scrollTo(targetEl, {
+              offset: -75,
+              duration: 1.2,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+          } else {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    });
+  });
+
+  // ==========================================
+  // 2. ANTISLOPUI FLUID CURSOR (POINTER: FINE ONLY)
+  // ==========================================
+  const cursorDot = document.getElementById('cursorDot');
+  const cursorAura = document.getElementById('cursorAura');
+
+  if (isFinePointer && cursorDot && cursorAura && typeof gsap !== 'undefined') {
+    gsap.set([cursorDot, cursorAura], { xPercent: -50, yPercent: -50, opacity: 0 });
+
+    const xDot = gsap.quickTo(cursorDot, "x", { duration: 0.1, ease: "power3.out" });
+    const yDot = gsap.quickTo(cursorDot, "y", { duration: 0.1, ease: "power3.out" });
+    const xAura = gsap.quickTo(cursorAura, "x", { duration: 0.38, ease: "power3.out" });
+    const yAura = gsap.quickTo(cursorAura, "y", { duration: 0.38, ease: "power3.out" });
+
+    let cursorShown = false;
+    window.addEventListener('mousemove', (e) => {
+      if (!cursorShown) {
+        gsap.to([cursorDot, cursorAura], { opacity: 1, duration: 0.25 });
+        cursorShown = true;
+      }
+      xDot(e.clientX);
+      yDot(e.clientY);
+      xAura(e.clientX);
+      yAura(e.clientY);
+    });
+
+    window.addEventListener('mouseleave', () => {
+      gsap.to([cursorDot, cursorAura], { opacity: 0, duration: 0.25 });
+      cursorShown = false;
+    });
+
+    // Contextual Hover States
+    const setCursorState = (type, label = '') => {
+      if (type === 'hover') {
+        cursorAura.classList.add('active-hover');
+        cursorAura.textContent = label;
+        gsap.to(cursorDot, { scale: 0, duration: 0.18 });
+      } else {
+        cursorAura.classList.remove('active-hover');
+        cursorAura.textContent = '';
+        gsap.to(cursorDot, { scale: 1, duration: 0.18 });
+      }
+    };
+
+    document.addEventListener('mouseover', (e) => {
+      const target = e.target.closest('[data-cursor], a, button, .project-card, .bento-card, .filter-btn, .modal-close-btn');
+      if (!target) return;
+
+      const customCursor = target.getAttribute('data-cursor');
+      if (customCursor === 'play') {
+        setCursorState('hover', 'PLAY');
+      } else if (customCursor === 'view') {
+        setCursorState('hover', 'VIEW');
+      } else if (customCursor === 'copy') {
+        setCursorState('hover', 'COPY');
+      } else {
+        setCursorState('hover', '');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      const target = e.target.closest('[data-cursor], a, button, .project-card, .bento-card, .filter-btn, .modal-close-btn');
+      if (target) {
+        setCursorState('default');
+      }
+    });
+  }
+
+  // ==========================================
+  // 3. MAGNETIC BUTTONS (POINTER: FINE ONLY)
+  // ==========================================
+  if (isFinePointer && typeof gsap !== 'undefined') {
+    const magneticTargets = document.querySelectorAll('.btn-primary, .btn-talk, .brand-logo, .theme-toggle-btn');
+    magneticTargets.forEach(el => {
+      const xTo = gsap.quickTo(el, "x", { duration: 0.5, ease: "elastic.out(1, 0.35)" });
+      const yTo = gsap.quickTo(el, "y", { duration: 0.5, ease: "elastic.out(1, 0.35)" });
+      const strength = 0.28;
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const relX = (e.clientX - (rect.left + rect.width / 2)) * strength;
+        const relY = (e.clientY - (rect.top + rect.height / 2)) * strength;
+        xTo(relX);
+        yTo(relY);
+      });
+
+      el.addEventListener('mouseleave', () => {
+        xTo(0);
+        yTo(0);
+      });
+    });
+  }
+
+  // ==========================================
+  // 4. GSAP ENTRANCE & SCROLLTRIGGER REVEALS
+  // ==========================================
+  if (!prefersReducedMotion && typeof gsap !== 'undefined') {
+    // Hero entrance choreography
+    const heroTl = gsap.timeline({ defaults: { ease: "power4.out" } });
+    heroTl
+      .from('.availability-badge', { y: -20, opacity: 0, duration: 0.8, delay: 0.15 })
+      .from('.hero-title', { y: 35, opacity: 0, duration: 1.0 }, "-=0.5")
+      .from('.hero-bio', { y: 25, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from('.hero-cta-group', { y: 20, opacity: 0, duration: 0.7 }, "-=0.5")
+      .from('.hero-stats-row', { y: 25, opacity: 0, duration: 0.8 }, "-=0.5")
+      .from('.hero-visual-card', { scale: 0.95, opacity: 0, duration: 1.1, ease: "expo.out" }, "-=0.7");
+
+    // Coordinated section reveals via ScrollTrigger
+    if (typeof ScrollTrigger !== 'undefined') {
+      document.querySelectorAll('.section-header').forEach(header => {
+        gsap.from(header.children, {
+          scrollTrigger: {
+            trigger: header,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.85,
+          stagger: 0.12,
+          ease: "power3.out"
+        });
+      });
+
+      gsap.from('.bento-card', {
+        scrollTrigger: {
+          trigger: '.bento-grid',
+          start: "top 82%",
+          toggleActions: "play none none none"
+        },
+        y: 45,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: "power3.out"
+      });
+    }
+  }
+
+  // ==========================================
+  // 5. THEME TOGGLE (DARK / LIGHT)
   // ==========================================
   const initTheme = () => {
     const savedTheme = localStorage.getItem('imam_portfolio_theme') || 'dark';
@@ -77,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 2. MOUSE SPOTLIGHT (BENTO CARDS)
+  // 6. MOUSE SPOTLIGHT (BENTO CARDS)
   // ==========================================
   const cards = document.querySelectorAll('.bento-card, .project-card, .service-card');
   document.addEventListener('mousemove', (e) => {
@@ -91,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 3. STATS NUMBER COUNTER ANIMATION
+  // 7. STATS NUMBER COUNTER ANIMATION
   // ==========================================
   const statsElements = document.querySelectorAll('.stat-number');
   const animateStats = () => {
@@ -133,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. RENDER PORTFOLIO ITEMS
+  // 8. RENDER PORTFOLIO ITEMS
   // ==========================================
   const renderPortfolio = (category = 'all') => {
     if (!portfolioGrid) return;
@@ -155,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
       card.setAttribute('aria-label', `View ${project.title} case study`);
+      card.setAttribute('data-cursor', project.previewType === 'video' ? 'play' : 'view');
 
       let badgeClass = 'badge-graphic';
       if (project.category === 'video-editing') {
@@ -202,6 +401,16 @@ document.addEventListener('DOMContentLoaded', () => {
       portfolioGrid.appendChild(card);
     });
 
+    if (typeof gsap !== 'undefined' && !prefersReducedMotion) {
+      gsap.from(portfolioGrid.querySelectorAll('.project-card'), {
+        y: 25,
+        opacity: 0,
+        duration: 0.55,
+        stagger: 0.06,
+        ease: "power3.out"
+      });
+    }
+
     updateFilterCounts();
   };
 
@@ -240,11 +449,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // 5. CASE STUDY DETAIL MODAL & INTERACTIVE MEDIA
+  // 9. CASE STUDY DETAIL MODAL & INTERACTIVE MEDIA
   // ==========================================
   const openModal = (projectId) => {
     const project = PORTFOLIO_DATA.find(p => p.id === projectId);
     if (!project || !modalBackdrop) return;
+
+    if (lenis) lenis.stop();
 
     previousActiveElement = document.activeElement;
     activeModalProject = project;
@@ -313,6 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalBackdrop.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
     stopVideoSimulator();
+    if (lenis) lenis.start();
     if (previousActiveElement) previousActiveElement.focus();
   };
 
@@ -345,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="player-buttons-row">
             <div class="player-left-controls">
-              <button class="player-ctrl-btn" id="playPauseBtn" aria-label="Play or Pause Video">
+              <button class="player-ctrl-btn" id="playPauseBtn" aria-label="Play or Pause Video" data-cursor="play">
                 <svg id="playIcon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
               </button>
               <div class="audio-wave-box" id="audioWaveBox" style="opacity: 0.5;">
@@ -542,7 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 6. CONTACT FORM & ACCESSIBLE FEEDBACK
+  // 10. CONTACT FORM & ACCESSIBLE FEEDBACK
   // ==========================================
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
