@@ -169,7 +169,7 @@ const PORTFOLIO_DATA = [
     tools: ["Figma", "Photoshop", "Canva Pro"],
     previewType: "carousel",
     accentColor: "#10b981",
-    themeGradient: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+    themeGradient: "#10b981",
     carouselSlides: [
       {
         slideNum: 1,
