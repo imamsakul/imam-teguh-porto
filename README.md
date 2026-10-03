@@ -78,3 +78,5 @@ Akses di browser: `http://localhost:8080`
 2. Klik **Add New...** > **Project**.
 3. Pilih repository GitHub portofolio yang baru saja Anda push.
 4. Klik **Deploy**. Website portofolio Anda langsung aktif secara global dalam hitungan detik!
+
+<!-- auto-sync verified -->
