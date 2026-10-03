@@ -211,40 +211,44 @@ button {
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
-    mix-blend-difference: difference;
+    mix-blend-mode: difference;
     transform: translate(-50%, -50%);
-    transition: opacity 0.2s ease;
+    opacity: 0;
+    will-change: transform;
   }
 
   .cursor-aura {
     position: fixed;
     top: 0;
     left: 0;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border: 1.5px solid rgba(255, 255, 255, 0.45);
     border-radius: 50%;
     pointer-events: none;
     z-index: 99998;
-    mix-blend-difference: difference;
+    mix-blend-mode: difference;
     transform: translate(-50%, -50%);
-    transition: width 0.3s var(--ease-expo), height 0.3s var(--ease-expo), background-color 0.3s var(--ease-expo), border-color 0.3s var(--ease-expo);
+    opacity: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 800;
     font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: 1px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: transparent;
+    transition: width 0.35s var(--ease-expo), height 0.35s var(--ease-expo), background-color 0.35s var(--ease-expo), border-color 0.35s var(--ease-expo), color 0.2s ease;
+    will-change: transform, width, height;
   }
 
   .cursor-aura.active-hover {
-    width: 64px;
-    height: 64px;
+    width: 68px;
+    height: 68px;
     background-color: rgba(255, 255, 255, 0.95);
     border-color: transparent;
-    color: #000000;
+    color: #0a0a0e;
   }
 }
 
