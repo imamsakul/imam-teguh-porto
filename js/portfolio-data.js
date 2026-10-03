@@ -121,7 +121,7 @@ const PORTFOLIO_DATA = [
     tools: ["Adobe Illustrator", "Adobe InDesign", "Photoshop"],
     previewType: "image",
     accentColor: "#d97706",
-    themeGradient: "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
+    themeGradient: "#d97706",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
         <rect width="600" height="400" fill="#1c1917"/>
@@ -691,25 +691,25 @@ const PORTFOLIO_DATA = [
     docPages: [
       { pageNum: 1, title: "The Problem & Market Opportunity", note: "High-contrast visual deck with key metrics and customer pain points." }
     ],
-    accentColor: "#6366f1",
-    themeGradient: "linear-gradient(135deg, #6366f1 0%, #4338ca 100%)",
+    accentColor: "#2563eb",
+    themeGradient: "#2563eb",
     svgIllustration: `
       <svg viewBox="0 0 600 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <rect width="600" height="400" fill="#090d16"/>
+        <rect width="600" height="400" fill="#07090e"/>
         <!-- 16:9 Slide Presentation Frame -->
         <g transform="translate(60, 45)">
-          <rect x="0" y="0" width="480" height="290" rx="10" fill="#0f172a" stroke="#334155" stroke-width="2"/>
-          <text x="35" y="50" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="800" fill="#818cf8" letter-spacing="2">05 / MARKET TRACTION</text>
-          <text x="35" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#f8fafc">Growing 24% MoM in Enterprise Deployments</text>
+          <rect x="0" y="0" width="480" height="290" rx="10" fill="#0c1017" stroke="#1e293b" stroke-width="2"/>
+          <text x="35" y="50" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="800" fill="#3b82f6" letter-spacing="2">05 / MARKET TRACTION</text>
+          <text x="35" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#ffffff">Growing 24% MoM in Enterprise Deployments</text>
           
           <!-- 3 metric cards -->
-          <rect x="35" y="115" width="125" height="110" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+          <rect x="35" y="115" width="125" height="110" rx="8" fill="#131926" stroke="#334155" stroke-width="1"/>
           <text x="50" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#38bdf8">$3.4M</text>
           <text x="50" y="175" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Contracted ARR</text>
           <text x="50" y="195" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#4ade80">+145% YoY</text>
 
-          <rect x="175" y="115" width="125" height="110" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
-          <text x="190" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#a855f7">140+</text>
+          <rect x="175" y="115" width="125" height="110" rx="8" fill="#131926" stroke="#334155" stroke-width="1"/>
+          <text x="190" y="150" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#2563eb">140+</text>
           <text x="190" y="175" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Enterprise Clients</text>
           <text x="190" y="195" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#4ade80">Zero Churn</text>
 
