@@ -216,29 +216,44 @@
         </div>
 
         <div class="bento-grid">
-          <!-- Bento Item 1: Large Talking Head Showcase -->
-          <div class="bento-card bento-card-large" data-cursor="play" onclick="document.querySelector('[data-id=\'ve-talkinghead-founder\']')?.click();" tabindex="0" role="button" aria-label="View Talking Head Case Study">
-            <div class="bento-badge badge-video">Pillar 1 • Video Editing</div>
-            <div class="bento-content">
-              <h3 class="bento-title">High-Retention Talking Head Production</h3>
-              <p class="bento-desc">
-                Teknik jump-cut mulus, multi-camera punch-in, subtitle kinetik dinamis, dan sound design multi-layer untuk memaksimalkan retensi video YouTube & executive podcast.
-              </p>
-              <div class="bento-stats">
-                <span class="bento-stat-pill"><strong>1.4M</strong> Views</span>
-                <span class="bento-stat-pill"><strong>68%</strong> Avg Retention</span>
-                <span class="bento-stat-pill">Premiere Pro • After Effects</span>
+          <!-- Bento Item 1: Large Talking Head Showcase with Live Reel Preview -->
+          <div class="bento-card bento-card-large bento-reel-showcase" role="region" aria-label="Featured Talking Head Video Showcase">
+            <div class="bento-reel-info">
+              <div>
+                <div class="bento-badge badge-video">Pillar 1 • Talking Head Video</div>
+                <h3 class="bento-title">Waspada Phising AI: Edukasi Siber Kemenkeu</h3>
+                <p class="bento-desc">
+                  Produksi video pendek Talking Head resmi Kanwil Ditjen Perbendaharaan NTB (Kemenkeu RI). Jump-cut presisi, punch-in framing dinamis, tipografi kinetik 3D beraksen merah-putih tegas, serta sound design penegas pesan bahaya phishing era Generative AI.
+                </p>
+                <div class="bento-stats">
+                  <span class="bento-stat-pill"><strong>Kanwil DJPb NTB</strong> Kemenkeu RI</span>
+                  <span class="bento-stat-pill"><strong>9:16</strong> Instagram Reel</span>
+                  <span class="bento-stat-pill">Premiere Pro • After Effects</span>
+                </div>
+              </div>
+              <div style="margin-top: 1.5rem;">
+                <button class="btn btn-secondary btn-sm" onclick="document.querySelector('[data-id=\'ve-talkinghead-phishing\']')?.click();" style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.55rem 1.15rem; font-size: 0.85rem; border-radius: var(--radius-full);">
+                  <span>Buka Studi Kasus Lengkap</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
               </div>
             </div>
-            <div class="bento-preview-visual">
-              <svg viewBox="0 0 400 240" width="100%" height="100%">
-                <rect width="400" height="240" fill="#101017" rx="8"/>
-                <circle cx="200" cy="110" r="50" fill="#f43f5e" opacity="0.15"/>
-                <circle cx="200" cy="110" r="30" fill="#f43f5e"/>
-                <polygon points="194,98 214,110 194,122" fill="#ffffff"/>
-                <rect x="60" y="180" width="280" height="28" rx="6" fill="#181824"/>
-                <text x="200" y="199" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="#facc15" text-anchor="middle">"SCALE SYSTEMS OR STALL"</text>
-              </svg>
+            <div class="bento-reel-player-box">
+              <div class="bento-reel-player-frame">
+                <iframe 
+                  src="https://www.instagram.com/reel/DUj5pHrkjth/embed/" 
+                  class="bento-reel-iframe" 
+                  title="Waspada Phising AI Instagram Reel - Kanwil DJPb NTB" 
+                  scrolling="no" 
+                  frameborder="0" 
+                  allowtransparency="true" 
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture">
+                </iframe>
+              </div>
+              <div class="bento-reel-tag">
+                <span class="status-dot"></span>
+                <span>Live Video Preview</span>
+              </div>
             </div>
           </div>
 
