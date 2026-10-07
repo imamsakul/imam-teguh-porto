@@ -500,7 +500,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (modalMediaArea) {
-      if (project.previewType === 'video') {
+      if (project.previewType === 'instagram-reel' || project.reelEmbedUrl) {
+        renderInstagramReelViewer(modalMediaArea, project);
+      } else if (project.previewType === 'video') {
         if (project.youtubeId) {
           modalMediaArea.innerHTML = `
             <div style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-md); overflow: hidden; background: #000;">
@@ -664,6 +666,29 @@ document.addEventListener('DOMContentLoaded', () => {
       videoProgressTimer = null;
     }
     isVideoPlaying = false;
+  };
+
+  // Instagram Reel Viewer
+  const renderInstagramReelViewer = (container, project) => {
+    container.innerHTML = `
+      <div class="modal-reel-container" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #07090e; border-radius: var(--radius-md); padding: 1.5rem 1rem; border: 1px solid var(--border-color);">
+        <div style="position: relative; width: 100%; max-width: 360px; height: 520px; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 16px 40px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08);">
+          <iframe 
+            src="${project.reelEmbedUrl}" 
+            title="${project.title}" 
+            style="width: 100%; height: 100%; border: none; overflow: hidden; border-radius: 12px; display: block;" 
+            scrolling="no" 
+            frameborder="0" 
+            allowtransparency="true" 
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+          </iframe>
+        </div>
+        <div style="margin-top: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; color: var(--text-secondary); font-size: 0.85rem;">
+          <span class="status-dot" style="background-color: #2563eb;"></span>
+          <span style="color: #cbd5e1; font-weight: 500;">Live Instagram Reel Preview • Kanwil Ditjen Perbendaharaan NTB (@djpbntb)</span>
+        </div>
+      </div>
+    `;
   };
 
   // Carousel Viewer
