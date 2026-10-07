@@ -376,6 +376,36 @@ const PORTFOLIO_DATA = [
   // 3. VIDEO EDITING (TALKING HEAD & MOTION GRAPHIC)
   // ==========================================
   {
+    id: "ve-talkinghead-phishing",
+    title: "Waspada Phising AI: Edukasi Keamanan Siber",
+    subtitle: "High-Retention Talking Head Reel & Kinetic Caption Production",
+    category: "video-editing",
+    subCategory: "talking-head",
+    categoryLabel: "Video Editing",
+    subLabel: "Talking Head",
+    featured: true,
+    year: "2026",
+    client: "Kanwil Ditjen Perbendaharaan (DJPb) NTB — Kemenkeu RI",
+    role: "Lead Video Editor & Kinetic Subtitle Designer",
+    tags: ["Premiere Pro", "After Effects", "Talking Head", "Kinetic Subtitles", "Sound FX", "Kemenkeu RI"],
+    image: "assets/images/talkinghead-phishing-djpb.jpg",
+    reelUrl: "https://www.instagram.com/reel/DUj5pHrkjth/",
+    reelEmbedUrl: "https://www.instagram.com/reel/DUj5pHrkjth/embed/",
+    stats: [
+      { label: "Lembaga", value: "Kanwil DJPb NTB" },
+      { label: "Format Video", value: "9:16 Vertical Reel" },
+      { label: "Spesialisasi", value: "Kinetic Subtitle & SFX" }
+    ],
+    summary: "Produksi video pendek Talking Head edukasi keamanan siber resmi Kanwil DJPb NTB (Kemenkeu RI) tentang bahaya ancaman Phising berbasis Generative AI, verifikasi link/email palsu, dan proteksi akun multi-faktor.",
+    details: "Mengemas topik teknis keamanan informasi publik menjadi konten vertikal 9:16 yang dinamis, komunikatif, dan memikat perhatian sejak detik pertama. Menggunakan teknik jump-cut cepat tanpa jeda kosong, punch-in framing, tipografi kinetik 3D beraksen merah-putih tegas, sound effects penegas konteks peringatan (SCAM & alert stings), serta integrasi identitas korporat Hari Bakti Perbendaharaan ke-22.",
+    tools: ["Adobe Premiere Pro", "Adobe After Effects", "Adobe Audition"],
+    previewType: "instagram-reel",
+    videoTopic: "Talking Head Edukasi Keamanan Siber",
+    videoDuration: "00:45 Reel",
+    accentColor: "#2563eb",
+    themeGradient: "#2563eb"
+  },
+  {
     id: "ve-talkinghead-founder",
     title: "Tech Founder: $0 to $10M Scale",
     subtitle: "High-Retention Talking Head Video Production",
