@@ -149,6 +149,57 @@ const PORTFOLIO_DATA = [
   // 2. SOCIAL MEDIA POST
   // ==========================================
   {
+    id: "sm-djpb-pendidikan",
+    title: "Realisasi Program Pendidikan NTB",
+    subtitle: "Official Instagram Carousel & Public Infographic Series",
+    category: "social-media",
+    categoryLabel: "Social Media Post",
+    featured: true,
+    year: "2025",
+    client: "Kanwil Ditjen Perbendaharaan (DJPb) NTB — Kemenkeu RI",
+    role: "Visual Content Designer & Infographic Specialist",
+    tags: ["Photoshop", "Illustrator", "Instagram Carousel", "Data Infographics", "Kemenkeu RI"],
+    image: "assets/images/realisasi-pendidikan-ntb.jpg",
+    stats: [
+      { label: "Lembaga", value: "Kemenkeu RI" },
+      { label: "Cakupan Data", value: "Provinsi NTB" },
+      { label: "Format Visual", value: "Carousel Post" }
+    ],
+    summary: "Desain visual official carousel Instagram untuk publikasi transparansi fiskal dan realisasi anggaran program pendidikan lingkup Provinsi NTB oleh Kanwil Ditjen Perbendaharaan (DJPb) NTB, Kementerian Keuangan RI.",
+    details: "Proyek publikasi media sosial instansi pemerintah ini menggabungkan standar corporate branding Kementerian Keuangan (InTress & WBBM) dengan storytelling visual yang segar, humanis, dan informatif. Cover menampilkan fotografi dinamis siswa sekolah dipadu aksen grafis geometris khas instansi, dilanjutkan dengan slide-slide infografis data realisasi APBN sektor pendidikan yang terstruktur rapi dan mudah dicerna masyarakat luas.",
+    tools: ["Adobe Photoshop", "Adobe Illustrator", "Canva Pro"],
+    previewType: "carousel",
+    accentColor: "#2563eb",
+    themeGradient: "#2563eb",
+    carouselSlides: [
+      {
+        slideNum: 1,
+        title: "Realisasi Program Pendidikan NTB",
+        badge: "COVER POST",
+        caption: "Slide 01: The Visual Hook — Fotografi humanis siswa sekolah dasar berpadu aksen geometris korporat Kemenkeu RI & tipografi tegas bernas.",
+        image: "assets/images/realisasi-pendidikan-ntb.jpg"
+      },
+      {
+        slideNum: 2,
+        title: "Alokasi & Penyaluran Dana BOSP",
+        badge: "FISKAL OVERVIEW",
+        caption: "Slide 02: Visualisasi data realisasi Bantuan Operasional Satuan Pendidikan (BOSP) di 10 Kabupaten/Kota se-NTB dengan hierarki data informatif."
+      },
+      {
+        slideNum: 3,
+        title: "Program Indonesia Pintar (PIP)",
+        badge: "DISTRIBUSI DATA",
+        caption: "Slide 03: Rincian penerima manfaat PIP jenjang SD, SMP, SMA/SMK dengan visual kartu ringkasan berbasis angka kunci."
+      },
+      {
+        slideNum: 4,
+        title: "Transparansi APBN untuk Generasi Emas",
+        badge: "CALL TO ACTION",
+        caption: "Slide 04: Slide penutup dengan pesan transparansi fiskal, portal djpb.kemenkeu.go.id/kanwil/ntb, dan identitas WBBM InTress."
+      }
+    ]
+  },
+  {
     id: "sm-finscale",
     title: "FinScale: High-Retention IG Carousel",
     subtitle: "10-Slide Educational Finance Carousel Series",
