@@ -339,12 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const filtered = category === 'all' 
       ? PORTFOLIO_DATA 
-      : PORTFOLIO_DATA.filter(item => {
-          if (category === 'video-editing') return item.category === 'video-editing';
-          if (category === 'talking-head') return item.category === 'video-editing' && item.subCategory === 'talking-head';
-          if (category === 'motion-graphic') return item.category === 'video-editing' && item.subCategory === 'motion-graphic';
-          return item.category === category;
-        });
+      : PORTFOLIO_DATA.filter(item => item.category === category);
 
     filtered.forEach(project => {
       const card = document.createElement('article');
@@ -353,12 +348,10 @@ document.addEventListener('DOMContentLoaded', () => {
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
       card.setAttribute('aria-label', `View ${project.title} case study`);
-      card.setAttribute('data-cursor', project.previewType === 'video' ? 'play' : 'view');
+      card.setAttribute('data-cursor', 'view');
 
       let badgeClass = 'badge-graphic';
-      if (project.category === 'video-editing') {
-        badgeClass = project.subCategory === 'motion-graphic' ? 'badge-motion' : 'badge-video';
-      } else if (project.category === 'social-media') {
+      if (project.category === 'social-media') {
         badgeClass = 'badge-social';
       } else if (project.category === 'document-layout') {
         badgeClass = 'badge-doc';
@@ -423,16 +416,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const countEl = btn.querySelector('.filter-count');
       if (!countEl) return;
 
-      let count = 0;
-      if (cat === 'all') {
-        count = PORTFOLIO_DATA.length;
-      } else if (cat === 'talking-head') {
-        count = PORTFOLIO_DATA.filter(p => p.subCategory === 'talking-head').length;
-      } else if (cat === 'motion-graphic') {
-        count = PORTFOLIO_DATA.filter(p => p.subCategory === 'motion-graphic').length;
-      } else {
-        count = PORTFOLIO_DATA.filter(p => p.category === cat).length;
-      }
+      const count = cat === 'all'
+        ? PORTFOLIO_DATA.length
+        : PORTFOLIO_DATA.filter(p => p.category === cat).length;
       countEl.textContent = count;
     });
   };
