@@ -691,10 +691,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const indicators = document.getElementById('carouselIndicators');
       if (!slideContent || !indicators) return;
 
+      const slideImg = slide.image || (activeCarouselSlide === 0 ? project.image : null);
+      const imgMarkup = slideImg 
+        ? `<div style="width: 100%; max-height: 380px; display: flex; justify-content: center; margin-bottom: 1.25rem; border-radius: var(--radius-sm); overflow: hidden;">
+             <img src="${slideImg}" alt="${slide.title}" style="max-height: 380px; max-width: 100%; object-fit: contain; border-radius: var(--radius-sm);">
+           </div>`
+        : '';
+
       slideContent.innerHTML = `
-        <span class="tag-pill" style="background: rgba(16, 185, 129, 0.2); color: #10b981; margin-bottom: 1rem;">${slide.badge} • Slide ${slide.slideNum} of ${slides.length}</span>
+        ${imgMarkup}
+        <span class="tag-pill" style="background: rgba(37, 99, 235, 0.15); color: #3b82f6; margin-bottom: 1rem;">${slide.badge} • Slide ${slide.slideNum} of ${slides.length}</span>
         <h4 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.75rem; color: #ffffff;">${slide.title}</h4>
-        <p style="color: #94a3b8; font-size: 0.95rem; max-width: 480px;">${slide.caption}</p>
+        <p style="color: #94a3b8; font-size: 0.95rem; max-width: 520px; margin: 0 auto;">${slide.caption}</p>
       `;
 
       indicators.innerHTML = slides.map((_, idx) => `
